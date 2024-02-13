@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export DOTFILES=$HOME/.dotfiles
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -99,3 +101,21 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+
+# Load all of my aliases and shortcuts
+# typeset -U _my_variables
+# _my_variables=($DOTFILES/**/variables.sh)
+
+typeset -U _my_aliases
+_my_aliases=($DOTFILES/**/aliases.sh)
+
+# typeset -U _my_functions
+# _my_functions=($DOTFILES/**/functions.sh)
+
+# _my_files=($_my_variables $_my_aliases $_my_functions)
+_my_files=($_my_aliases)
+
+for file in ${_my_files} ; do
+  source $file
+done
